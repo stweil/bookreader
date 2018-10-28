@@ -94,7 +94,7 @@ var left_top = function(event) {
 	}
 	else if (typeof(event.originalEvent) == 'undefined') {
 		var str = '';
-		for (i in event) {
+		for (var i in event) {
 			str += ', ' + i + ': ' + event[i];
 		}
 		console.error("don't understand x and y for " + event.type + ' event: ' + str);

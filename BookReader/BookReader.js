@@ -996,7 +996,7 @@ BookReader.prototype.drawLeafsThumbnail = function( seekIndex ) {
 
             for (j=0; j<leafMap[row].leafs.length; j++) {
                 index = j;
-                leaf = leafMap[row].leafs[j].num;
+                var leaf = leafMap[row].leafs[j].num;
 
                 leafWidth = this.thumbWidth;
                 leafHeight = parseInt((this.getPageHeight(leaf)*this.thumbWidth)/this.getPageWidth(leaf), 10);
@@ -1379,7 +1379,7 @@ BookReader.prototype.resizePageView1up = function() {
 BookReader.prototype.onePageCalculateViewDimensions = function(reduce, padding) {
     var viewWidth = 0;
     var viewHeight = 0;
-    for (i=0; i<this.getNumLeafs(); i++) {
+    for (var i=0; i<this.getNumLeafs(); i++) {
         viewHeight += parseInt(this._getPageHeight(i)/reduce) + padding;
         var width = parseInt(this._getPageWidth(i)/reduce);
         if (width>viewWidth) viewWidth=width;
@@ -1493,7 +1493,7 @@ BookReader.prototype.quantizeReduce = function(reduce, reductionFactors) {
     var quantized = reductionFactors[0].reduce;
     var distance = Math.abs(reduce - quantized);
     for (var i = 1; i < reductionFactors.length; i++) {
-        newDistance = Math.abs(reduce - reductionFactors[i].reduce);
+        var newDistance = Math.abs(reduce - reductionFactors[i].reduce);
         if (newDistance < distance) {
             distance = newDistance;
             quantized = reductionFactors[i].reduce;
@@ -1935,7 +1935,7 @@ BookReader.prototype.prepareTwoPageView = function(centerPercentageX, centerPerc
         top: this.twoPage.bookCoverDivTop+this.twoPage.coverInternalPadding+'px'
     }).appendTo(this.refs.$brTwoPageView);
 
-    div = document.createElement('div');
+    var div = document.createElement('div');
     $(div).attr('class', 'BRgutter').css({
         width:           this.twoPage.bookSpineDivWidth+'px',
         height:          this.twoPage.bookSpineDivHeight+'px',
